@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Daymate</string>
     <string name="action_routines">routines</string>
     <string name="placeholder">placeholder</string>
     <string name="action_progress">progress</string>
