@@ -24,6 +24,7 @@ public class ShopActivity extends Presenter {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main_full);
+
         this.setViewModel(TestViewModel.class);
 
         if (savedInstanceState == null) {
@@ -32,8 +33,6 @@ public class ShopActivity extends Presenter {
 
         BottomNavigationView menu = (BottomNavigationView)this.findViewById(R.id.navigation_bar);
         FloatingActionButton fab = (FloatingActionButton)this.findViewById(R.id.navigation_fab);
-
-        fab.setImageResource(R.drawable.tab_bullseye_56dp);
 
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -55,11 +54,14 @@ public class ShopActivity extends Presenter {
                         break;
                     case R.id.navigation_tab_shop:
                         setViewModel(ShopViewModel.class);
-                        loadActivity(ShopActivity.class);
+                        replaceView(R.id.fragment_container, ShopStoreFragment.class);
+                        break;
+                    default: return false;
                 }
-
                 return true;
             }
         });
+
+        menu.setSelectedItemId(R.id.navigation_tab_shop);
     }
 }

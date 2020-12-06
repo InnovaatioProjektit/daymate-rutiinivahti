@@ -7,13 +7,14 @@
         android:id="@+id/navigation_tab_routines"
         android:icon="@drawable/tab_routines_24dp"
         android:title="@string/action_routines"
-        app:showAsAction="always"/>
+        />
 
     <item
         android:id="@+id/navigation_tab_progress"
         android:icon="@drawable/tab_progress_24dp"
         android:title="@string/action_progress"
-        app:showAsAction="always"/>
+
+        />
 
     <item
         android:id="@+id/placeholder"
@@ -25,12 +26,13 @@
         android:id="@+id/navigation_tab_something"
         android:icon="@drawable/tab_placeholder"
         android:title="@string/placeholder"
-        app:showAsAction="always"/>
+       />
 
     <item
+
         android:id="@+id/navigation_tab_shop"
         android:icon="@drawable/tab_shop_24dp"
         android:title="@string/action_shop"
-        app:showAsAction="always"/>
+       />
 
 </menu>

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/purple_200"
+        android:background="#ECECEC"
         app:contentInsetStart="0dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,6 +20,8 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             app:elevation="0dp"
+            app:labelVisibilityMode="unlabeled"
+            app:itemIconSize="32dp"
             app:menu="@menu/navigation" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
@@ -34,6 +36,7 @@
         app:layout_anchor="@id/bottom_bar"
         app:maxImageSize="60dp"
         app:fabCustomSize="80dp"
+        app:shapeAppearanceOverlay="@style/FABOverlay"
         android:contentDescription="Add routines" />
 
 
