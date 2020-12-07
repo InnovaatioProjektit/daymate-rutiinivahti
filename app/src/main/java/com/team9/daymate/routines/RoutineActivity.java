@@ -43,17 +43,20 @@ public class RoutineActivity extends Presenter {
                 switch(item.getItemId()) {
                     case R.id.navigation_tab_progress: break;
                     case R.id.navigation_tab_routines: break;
-                    case R.id.navigation_tab_shop: break;
+                    case R.id.navigation_tab_shop:
+                        loadActivity(ShopActivity.class);
+                        return true;
                     default: return false;
                 }
 
                 saveInstance.putInt("SELECTED", item.getItemId());
                 loadActivity(NavActivity.class, saveInstance);
 
-                return true;
+                return false;
             }
         });
 
+        fab.setImageResource(R.drawable.tab_add_56dp);
         menu.setSelectedItemId(R.id.placeholder);
     }
 }
