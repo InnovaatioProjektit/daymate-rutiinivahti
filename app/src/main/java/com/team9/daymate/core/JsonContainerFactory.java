@@ -18,7 +18,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 
-//TODO: KIRILLILTÄ ALKUPERÄINEN
 public class JsonContainerFactory {
     private static final String FILE_IDENT = "UNIQUE_APP_LOCALSTORAGE_KEY";
     private JSONObject json_cache;
@@ -28,7 +27,7 @@ public class JsonContainerFactory {
     }
 
     public void purge(Context context) {
-        context.deleteFile("UNIQUE_APP_LOCALSTORAGE_KEY");
+        context.deleteFile(FILE_IDENT);
     }
 
     public void remove(String name) {
@@ -37,7 +36,6 @@ public class JsonContainerFactory {
 
     public static JSONObject Set(String name, Object item) {
         JSONObject jsob = new JSONObject();
-
         try {
             jsob.putOpt(name, item);
         } catch (JSONException jex) {
@@ -47,31 +45,9 @@ public class JsonContainerFactory {
         return jsob;
     }
 
-    public static JSONArray Array(ArrayList list) {
-        JSONArray jsar = new JSONArray();
-        for(Object item : list){
-            jsar.put(item);
-        }
-
-        return jsar;
-    }
-
-    public static JSONArray Array(String list) {
-        JSONArray jsar = new JSONArray();
-        String[] var2 = list.split(";");
-        int var3 = var2.length;
-
-        for(int var4 = 0; var4 < var3; ++var4) {
-            Object i = var2[var4];
-            jsar.put(i);
-        }
-
-        return jsar;
-    }
-
     public void initialize(Context _context) {
         File internal_filepath = _context.getFilesDir();
-        File fileref = new File(internal_filepath, "UNIQUE_APP_LOCALSTORAGE_KEY");
+        File fileref = new File(internal_filepath, FILE_IDENT);
 
         try {
             if (fileref.exists()) {
@@ -82,8 +58,8 @@ public class JsonContainerFactory {
 
                 try {
                     this.json_cache = new JSONObject(new String(content, StandardCharsets.UTF_8));
-                } catch (JSONException var7) {
-                    Log.w("InternalStorage", "Error parsing to JSONObject ", var7);
+                } catch (JSONException ex) {
+                    Log.w("InternalStorage", "Error parsing to JSONObject ", ex);
                 }
             } else {
                 OutputStream writer = new FileOutputStream(fileref);
@@ -104,15 +80,28 @@ public class JsonContainerFactory {
     public void add(String name, Object item) {
         try {
             this.json_cache.putOpt(name, item);
-        } catch (JSONException var4) {
-            var4.printStackTrace();
+        } catch (JSONException jex) {
+            jex.printStackTrace();
+        }
+    }
+
+    public <T> void add(String name, ArrayList<T> list){
+        JSONArray jar = new JSONArray();
+
+        for(T item : list){
+            jar.put(item);
         }
 
+        try{
+            json_cache.putOpt(name, jar);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
     }
 
     public void commit(Context context) {
         File internal_filepath = context.getFilesDir();
-        File fileref = new File(internal_filepath, "UNIQUE_APP_LOCALSTORAGE_KEY");
+        File fileref = new File(internal_filepath, FILE_IDENT);
 
         try {
             OutputStream writer = new FileOutputStream(fileref);

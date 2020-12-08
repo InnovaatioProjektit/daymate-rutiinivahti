@@ -24,6 +24,7 @@ public class RoutineActivity extends Presenter {
 
         if (savedInstanceState == null) {
             this.loadView(R.id.fragment_container, RoutineDailyFragment.class, this.getIntent().getExtras());
+
         }
 
         BottomNavigationView menu = (BottomNavigationView)this.findViewById(R.id.navigation_bar);

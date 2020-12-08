@@ -22,6 +22,7 @@ import com.team9.daymate.routines.RoutineDailyFragment;
 import com.team9.daymate.routines.RoutineListFragment;
 import com.team9.daymate.shop.ShopActivity;
 
+
 public class NavActivity extends Presenter {
 
     protected void onCreate(Bundle savedInstanceState) {

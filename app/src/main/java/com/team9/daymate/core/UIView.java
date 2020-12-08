@@ -12,8 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.team9.daymate.example.TestViewModel;
+
+import java.lang.reflect.Type;
+
 public abstract class UIView extends Fragment {
-    private ViewModel viewModel;
+    protected ViewModel viewModel;
 
     public UIView(@Nullable Bundle InstanceState, @LayoutRes int layoutRes) {
         super(layoutRes);
@@ -24,12 +28,14 @@ public abstract class UIView extends Fragment {
 
     public abstract void onViewAction(View view);
 
-    public void setViewModel(Class<? extends ViewModel> cls) {
-        this.viewModel = (new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory())).get(cls);
+    public  <T extends ViewModel> void setViewModel(Class<T> cls) {
+        this.viewModel = (T)(new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory())).get(cls);
     }
 
-    public ViewModel getViewModel() {
-        return this.viewModel;
+
+    @SuppressWarnings("unchecked")
+    public<T extends ViewModel> T getViewModel(Class<T> cls) {
+        return (T) this.viewModel;
     }
 
     @Nullable

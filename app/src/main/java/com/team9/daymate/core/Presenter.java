@@ -16,12 +16,13 @@ import java.lang.reflect.InvocationTargetException;
 public class Presenter extends AppCompatActivity {
     protected ViewModel viewModel;
 
-    public void setViewModel(Class<? extends ViewModel> cls) {
-        this.viewModel = (new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory())).get(cls);
+    public  <T extends ViewModel> void setViewModel(Class<T> cls) {
+        this.viewModel = (T)(new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory())).get(cls);
     }
 
-    public ViewModel getViewModel() {
-        return this.viewModel;
+    @SuppressWarnings("unchecked")
+    public <T extends ViewModel> T getViewModel(Class<T> cls) {
+        return (T) this.viewModel;
     }
 
     public void loadView(int view, Fragment fragmentInstance) {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircularImageView">
+        <attr name="circle_width" format="dimension" />
+        <attr name="circle_color" format="color" />
+        <attr name="circle_overlay" format="boolean" />
+        <attr name="circle_backgroundColor" format="color" />
+        <attr name="circle_min" format="integer" />
+        <attr name="circle_max" format="integer" />
+        <attr name="circle_progress" format="integer" />
+    </declare-styleable>
+</resources>
