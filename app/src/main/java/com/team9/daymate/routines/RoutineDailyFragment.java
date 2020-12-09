@@ -26,7 +26,8 @@ public class RoutineDailyFragment extends UIView {
 
 
     public RoutineDailyFragment(@Nullable Bundle InstanceState) {
-        super(InstanceState, R.layout.test_activity);
+        super(InstanceState, R.layout.test_activity);  //TODO: VAIHDA LAYOUT OIKEAAN
+
     }
 
     public void onViewAction(View view) {

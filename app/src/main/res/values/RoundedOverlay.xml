@@ -2,8 +2,8 @@
 <resources>
     <style name="FABOverlay" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">10dp</item>
-        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeTopLeft">30dp</item>
+        <item name="cornerSizeTopRight">30dp</item>
         <item name="cornerSizeBottomRight">40dp</item>
         <item name="cornerSizeBottomLeft">40dp</item>
     </style>

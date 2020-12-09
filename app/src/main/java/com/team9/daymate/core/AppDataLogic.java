@@ -6,5 +6,6 @@ public class AppDataLogic {
     public static String CHANNEL_ID ="JokuId";
 
     private AppDataLogic() {
+
     }
 }
