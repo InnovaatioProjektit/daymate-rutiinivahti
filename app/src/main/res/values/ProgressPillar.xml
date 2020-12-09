@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProgressPillar">
+        <attr name="color" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="min" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="progress" format="float" />
+        <attr name="pillarWidth" format="integer" />
+    </declare-styleable>
+</resources>

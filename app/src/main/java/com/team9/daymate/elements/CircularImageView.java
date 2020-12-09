@@ -58,6 +58,7 @@ public class CircularImageView extends AppCompatImageView {
     private int borderColor = DEFAULT_BORDER_COLOR;
     private int borderWidth = DEFAULT_BORDER_WIDTH;
     private int backgroundColor = DEFAULT_CIRCLE_BACKGROUND_COLOR;
+    private int backgroundTint = DEFAULT_CIRCLE_BACKGROUND_COLOR;
     private int imageAlpha = DEFAULT_IMAGE_ALPHA;
 
     private Bitmap bitmap;
@@ -119,6 +120,7 @@ public class CircularImageView extends AppCompatImageView {
 
         borderWidth = a.getDimensionPixelSize(R.styleable.CircularImageView_circle_width, DEFAULT_BORDER_WIDTH);
         borderColor = a.getColor(R.styleable.CircularImageView_circle_color, DEFAULT_BORDER_COLOR);
+        backgroundTint = a.getColor(R.styleable.CircularImageView_circle_color, DEFAULT_CIRCLE_BACKGROUND_COLOR);
         borderOverlay = a.getBoolean(R.styleable.CircularImageView_circle_overlay, DEFAULT_BORDER_OVERLAY);
         backgroundColor = a.getColor(R.styleable.CircularImageView_circle_backgroundColor, DEFAULT_CIRCLE_BACKGROUND_COLOR);
         progressStep = a.getFloat(R.styleable.CircularImageView_circle_progress, DEFAULT_CIRCLE_BACKGROUND_COLOR);
@@ -128,9 +130,12 @@ public class CircularImageView extends AppCompatImageView {
         a.recycle();
 
         initialize();
+
+
     }
 
 
+    @SuppressLint("CanvasSize")
     @Override
     protected void onDraw(Canvas canvas) {
         if (disableTransformation) {
@@ -163,8 +168,11 @@ public class CircularImageView extends AppCompatImageView {
         }
 
         if (borderWidth > 0) {
-            //canvas.drawCircle(borderRect.centerX(), borderRect.centerY(), borderRadius, borderPaint);
-            borderPaint.setColor(lightenColor(borderColor, 0.3f));
+
+            if(backgroundTint != DEFAULT_CIRCLE_BACKGROUND_COLOR){
+                borderPaint.setColor(backgroundTint);
+            }else borderPaint.setColor(lightenColor(borderColor, 0.3f));
+
             canvas.drawOval(borderRect, borderPaint);
             float angle = 360 * progressStep / progressMax;
             borderPaint.setColor(borderColor);
@@ -528,7 +536,7 @@ public class CircularImageView extends AppCompatImageView {
     public void setProgressWithAnimation(float progress) {
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(this, "progress", progress);
-        objectAnimator.setDuration(1500);
+        objectAnimator.setDuration(1000);
         objectAnimator.setInterpolator(new DecelerateInterpolator());
         objectAnimator.start();
     }

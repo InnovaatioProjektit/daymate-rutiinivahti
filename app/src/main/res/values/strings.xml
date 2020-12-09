@@ -4,4 +4,101 @@
     <string name="placeholder">placeholder</string>
     <string name="action_progress">progress</string>
     <string name="action_shop">shop</string>
+    <string name="title_placeholder">PlaceHolder Title</string>
+
+    <string-array name="routine_categories">
+        <item>Ruoka ja Juoma</item>
+        <item>Harrastus</item>
+        <item>Elämäntapa</item>
+        <item>Urheilu</item>
+        <item>Työ ja Opiskelu</item>
+        <item>Kotitalous</item>
+        <item>Hygienia</item>
+        <item>Uskonto</item>
+        <item>Luonto</item>
+        <item>Terveys</item>
+    </string-array>
+
+    <string-array name="routine_task_food">
+        <item>Kahvitauko</item>
+        <item>Brunssi</item>
+        <item>Snacktime</item>
+        <item>Päivällinen</item>
+        <item>Vesi</item>
+        <item>Ruuanlaitto</item>
+        <item>Aamiainen</item>
+        <item>Illallinen</item>
+        <item>Syöminen</item>
+    </string-array>
+
+    <string-array name="routine_task_hobby">
+        <item>Ulkoilutus</item>
+        <item>Laulaminen</item>
+        <item>Soittovälineet</item>
+        <item>Pelit</item>
+        <item>Patikointi</item>
+        <item>Televisio</item>
+        <item>Musiikki</item>
+    </string-array>
+
+    <string-array name="routine_task_lifestyle">
+        <item>Herätys</item>
+        <item>Jooga</item>
+        <item>Zen hetki</item>
+        <item>Rentoutuminen</item>
+        <item>Nukkuminen</item>
+        <item>Perheaika</item>
+        <item>Rakkaus</item>
+        <item>Keskustelu</item>
+        <item>Oma aika</item>
+        <item>Hiljainen hetki</item>
+    </string-array>
+
+    <string-array name="routine_task_sport">
+        <item>Voimistelu</item>
+        <item>Liikuntasali</item>
+        <item>Kamppailulaji</item>
+        <item>Pyöräily</item>
+        <item>Kiipeily</item>
+    </string-array>
+
+    <string-array name="routine_task_work">
+        <item>Maksumuistutus</item>
+        <item>Koe</item>
+        <item>Projekti</item>
+        <item>Salkku</item>
+        <item>Työpäivä</item>
+    </string-array>
+
+    <string-array name="routine_task_house">
+        <item>Siivoa</item>
+        <item>Pese</item>
+        <item>Lemmikki</item>
+    </string-array>
+
+    <string-array name="routine_task_hygienia">
+        <item>Hampaiden harjaus</item>
+        <item>Suihku</item>
+        <item>Sauna</item>
+        <item>Meikkaus</item>
+        <item>Hiustenleikku</item>
+    </string-array>
+
+    <string-array name="routine_task_religion">
+        <item>Rukoilu</item>
+        <item>Kirkkotapahtuma</item>
+    </string-array>
+
+    <string-array name="routine_task_nature">
+        <item>Telttailu</item>
+        <item>Patikointi</item>
+        <item>Kalastus</item>
+    </string-array>
+
+    <string-array name="routine_task_health">
+        <item>Lääkemuistutus</item>
+        <item>Lääkärikäynti</item>
+        <item>Hammashoitokäynti</item>
+        <item>Verenpaine</item>
+    </string-array>
 </resources>

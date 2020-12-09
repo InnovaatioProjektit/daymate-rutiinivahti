@@ -32,11 +32,13 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:scaleType="center"
+
         android:src="@drawable/tab_bullseye_56dp"
         app:layout_anchor="@id/bottom_bar"
         app:maxImageSize="60dp"
         app:fabCustomSize="80dp"
         app:shapeAppearanceOverlay="@style/FABOverlay"
+        app:backgroundTint="@color/pacific400"
         android:contentDescription="Add routines" />
 
 

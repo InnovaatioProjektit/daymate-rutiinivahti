@@ -3,6 +3,7 @@
     <declare-styleable name="CircularImageView">
         <attr name="circle_width" format="dimension" />
         <attr name="circle_color" format="color" />
+        <attr name="circle_backgroundTint" format="color" />
         <attr name="circle_overlay" format="boolean" />
         <attr name="circle_backgroundColor" format="color" />
         <attr name="circle_min" format="integer" />

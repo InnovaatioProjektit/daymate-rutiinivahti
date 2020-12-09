@@ -6,25 +6,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <com.team9.daymate.elements.ProgressPillar
+        android:layout_width="89dp"
+        android:layout_height="209dp"
+        android:layout_marginBottom="8dp"
+        app:backgroundColor="@color/cardview_dark_background"
+        app:color="@color/purple_200"
+        app:layout_constraintBottom_toTopOf="@+id/circle"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintStart_toStartOf="parent"
+        app:pillarWidth="150"
+        app:progress="50" />
+
     <com.team9.daymate.elements.CircularImageView
         android:id="@+id/circle"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/tab_settings_32dp"
         android:padding="10dp"
+        android:src="@drawable/tab_settings_32dp"
 
+        app:circle_backgroundColor="@color/green"
         app:circle_color="@color/purple_200"
         app:circle_overlay="true"
-        app:circle_width="10dp"
         app:circle_progress="0"
-        app:circle_backgroundColor="@color/green"
+        app:circle_width="10dp"
 
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.903" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
