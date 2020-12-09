@@ -13,6 +13,7 @@ import com.team9.daymate.R;
 import com.team9.daymate.core.Presenter;
 import com.team9.daymate.example.TestViewModel;
 import com.team9.daymate.fragments.ProgressFragment;
+import com.team9.daymate.notification.NotificationActivity;
 import com.team9.daymate.shop.ShopActivity;
 
 public class RoutineActivity extends Presenter {
@@ -45,7 +46,7 @@ public class RoutineActivity extends Presenter {
                     case R.id.navigation_tab_progress: break;
                     case R.id.navigation_tab_routines: break;
                     case R.id.navigation_tab_shop:
-                        loadActivity(ShopActivity.class);
+                        loadActivity(NotificationActivity.class);
                         return true;
                     default: return false;
                 }
