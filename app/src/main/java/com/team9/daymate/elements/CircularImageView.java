@@ -20,6 +20,7 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
@@ -67,6 +68,7 @@ public class CircularImageView extends AppCompatImageView {
     private float drawableRadius;
     private float borderRadius;
 
+
     private float progressStep;
     private int progressMax;
     private int progressMin;
@@ -80,8 +82,6 @@ public class CircularImageView extends AppCompatImageView {
 
     private boolean borderOverlay;
     private boolean disableTransformation;
-
-
 
     private void initialize(){
         super.setScaleType(SCALE_TYPE);
@@ -102,15 +102,18 @@ public class CircularImageView extends AppCompatImageView {
         backgroundPaint.setColor(backgroundColor);
 
         Initialized = true;
+
     }
 
     public CircularImageView(Context context){
         super(context);
         initialize();
+
     }
 
     public CircularImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+
     }
 
     public CircularImageView(Context context, AttributeSet attrs, int defStyle) {
@@ -120,9 +123,9 @@ public class CircularImageView extends AppCompatImageView {
 
         borderWidth = a.getDimensionPixelSize(R.styleable.CircularImageView_circle_width, DEFAULT_BORDER_WIDTH);
         borderColor = a.getColor(R.styleable.CircularImageView_circle_color, DEFAULT_BORDER_COLOR);
-        backgroundTint = a.getColor(R.styleable.CircularImageView_circle_color, DEFAULT_CIRCLE_BACKGROUND_COLOR);
         borderOverlay = a.getBoolean(R.styleable.CircularImageView_circle_overlay, DEFAULT_BORDER_OVERLAY);
         backgroundColor = a.getColor(R.styleable.CircularImageView_circle_backgroundColor, DEFAULT_CIRCLE_BACKGROUND_COLOR);
+        backgroundTint = a.getColor(R.styleable.CircularImageView_circle_backgroundTint, DEFAULT_CIRCLE_BACKGROUND_COLOR);
         progressStep = a.getFloat(R.styleable.CircularImageView_circle_progress, DEFAULT_CIRCLE_BACKGROUND_COLOR);
         progressMax    = a.getInteger(R.styleable.CircularImageView_circle_max, DEFAULT_PROGRESS_MAX);
         progressMin   = a.getInteger(R.styleable.CircularImageView_circle_min, DEFAULT_PROGRESS_MIN);
@@ -130,12 +133,9 @@ public class CircularImageView extends AppCompatImageView {
         a.recycle();
 
         initialize();
-
-
     }
 
 
-    @SuppressLint("CanvasSize")
     @Override
     protected void onDraw(Canvas canvas) {
         if (disableTransformation) {
@@ -168,10 +168,11 @@ public class CircularImageView extends AppCompatImageView {
         }
 
         if (borderWidth > 0) {
-
             if(backgroundTint != DEFAULT_CIRCLE_BACKGROUND_COLOR){
                 borderPaint.setColor(backgroundTint);
-            }else borderPaint.setColor(lightenColor(borderColor, 0.3f));
+            }else {
+                borderPaint.setColor(lightenColor(borderColor, 0.3f));
+            }
 
             canvas.drawOval(borderRect, borderPaint);
             float angle = 360 * progressStep / progressMax;
@@ -536,7 +537,7 @@ public class CircularImageView extends AppCompatImageView {
     public void setProgressWithAnimation(float progress) {
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(this, "progress", progress);
-        objectAnimator.setDuration(1000);
+        objectAnimator.setDuration(1500);
         objectAnimator.setInterpolator(new DecelerateInterpolator());
         objectAnimator.start();
     }

@@ -37,6 +37,9 @@ public class TestFragment extends UIView {
 
         //tv.setText(teksti);
 
+        //View v = view.findViewById(R.id.testView);
+        //getViewModel(TestViewModel.class).function();
+
 
     }
 
@@ -44,10 +47,11 @@ public class TestFragment extends UIView {
         // Täällä lisätään ViewModel ja muokataan toisesta fragmentista tai aktivitista tulleita argumentteja
         // ViewModel on hyvä käyttää ActivityCreated metoodissa
         super.onCreate(savedInstanceState);
-        if (this.getArguments() != null) {
-        }
+        if (this.getArguments() != null) { }
 
         setViewModel(TestViewModel.class);
+
+        //getViewModel(TestViewModel.class).initialize();
 
 
     }

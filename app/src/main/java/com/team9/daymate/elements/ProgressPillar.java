@@ -14,10 +14,15 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -54,6 +59,7 @@ public class ProgressPillar extends View {
 
     private Bitmap bitmap;
     private Canvas bitmapCanvas;
+    private Canvas TextCanvas;
 
     private float drawableRadius;
     private float borderRadius;
@@ -61,6 +67,7 @@ public class ProgressPillar extends View {
     private boolean initialized;
     private boolean drawableDirty;
     private boolean rebuildShader;
+
 
 
 
@@ -104,6 +111,8 @@ public class ProgressPillar extends View {
 
         initialized = true;
     }
+
+
 
     @SuppressLint("CanvasSize")
     @Override

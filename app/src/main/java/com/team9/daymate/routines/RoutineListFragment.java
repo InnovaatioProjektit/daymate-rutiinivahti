@@ -15,7 +15,7 @@ public class RoutineListFragment extends UIView {
     }
 
     public void onViewAction(View view) {
-
+        getViewModel(RoutineViewModel.class).populateList(getContext(), view);
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,5 +24,6 @@ public class RoutineListFragment extends UIView {
         }
 
         this.setViewModel(RoutineViewModel.class);
+        getViewModel(RoutineViewModel.class).initialize();
     }
 }

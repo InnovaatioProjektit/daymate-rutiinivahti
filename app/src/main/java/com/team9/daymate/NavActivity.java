@@ -29,6 +29,9 @@ public class NavActivity extends Presenter {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main_full);
 
+        Log.d("VARASTO", "TRUU");
+
+
         BottomNavigationView menu = (BottomNavigationView)this.findViewById(R.id.navigation_bar);
         FloatingActionButton fab = (FloatingActionButton)this.findViewById(R.id.navigation_fab);
 
@@ -37,6 +40,9 @@ public class NavActivity extends Presenter {
         if((fragment = getFragmentFromResources(res)) != null){
             loadView(R.id.fragment_container, fragment);
         }
+
+
+
         menu.setSelectedItemId(res);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +72,7 @@ public class NavActivity extends Presenter {
             case R.id.navigation_tab_progress: return ProgressFragment.class;
             case R.id.navigation_tab_routines: return RoutineListFragment.class;
             case R.id.navigation_tab_shop:
-                loadActivity(ShopActivity.class);
+                //loadActivity(ShopActivity.class);
                 return null;
             default: return null;
         }
