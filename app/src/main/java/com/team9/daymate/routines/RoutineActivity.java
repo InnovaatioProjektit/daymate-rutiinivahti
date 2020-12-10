@@ -33,10 +33,8 @@ public class RoutineActivity extends Presenter {
         this.setViewModel(TestViewModel.class);
 
         if (savedInstanceState == null) {
-            Log.d("VARASTO", "LONG " + this.getIntent().getExtras());
             this.loadView(R.id.fragment_container, RoutineDailyFragment.class, this.getIntent().getExtras());
         }
-
 
         BottomNavigationView menu = (BottomNavigationView)this.findViewById(R.id.navigation_bar);
         FloatingActionButton fab = (FloatingActionButton)this.findViewById(R.id.navigation_fab);
@@ -47,7 +45,6 @@ public class RoutineActivity extends Presenter {
             }
         });
 
-        Intent that = getIntent();
         menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Bundle saveInstance = new Bundle();
@@ -56,14 +53,13 @@ public class RoutineActivity extends Presenter {
                     case R.id.navigation_tab_progress: break;
                     case R.id.navigation_tab_routines: break;
                     case R.id.navigation_tab_shop:
-                        loadActivity(NotificationActivity.class);
+                        loadActivity(ShopActivity.class);
                         return true;
                     default: return false;
                 }
 
                 saveInstance.putInt("SELECTED", item.getItemId());
-                loadActivity(NavActivity.class, that.getExtras());
-
+                loadActivity(NavActivity.class, saveInstance);
 
                 return false;
             }

@@ -63,7 +63,6 @@ public class RoutineDailyFragment extends UIView {
         super.onCreate(savedInstanceState);
         hasLaunch = false;
         if (this.getArguments() != null) {
-            hasLaunch = getArguments().getInt("HAS_ACTIVITIES") == 1;
 
         }
     }
