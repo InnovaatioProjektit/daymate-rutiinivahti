@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @author Alexander L -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/pacific200"
+    app:cardElevation="@dimen/_8dp"
+    android:layout_gravity="center"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="150dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="40dp">
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center|top"
+        android:text="Uusi suoritus!"
+        android:textAppearance="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
+        android:textAlignment="center"
+        android:textSize="@dimen/_32sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|start"
+        android:elevation="1dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:textAppearance="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
+        android:text="Palkitsemme sinua 10 pisteellä\nsuorituksestasi. Jatka eteenpäin\nja kohta viikko on pulkassa."
+        android:textSize="@dimen/_16sp"
+         />
+
+    <com.team9.daymate.elements.CircularImageView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:paddingEnd="10dp"
+        android:layout_gravity="center_vertical|end"
+        android:src="@drawable/ic_sport_32"
+        app:circle_backgroundColor="@color/pacific100"
+
+
+        />
+
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

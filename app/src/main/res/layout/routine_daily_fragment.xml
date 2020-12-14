@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- @author Alexander L -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/carrot100"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <GridView
-        android:visibility="visible"
-        android:id="@+id/RoutineGrid"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:columnWidth="140dp"
-        android:verticalSpacing="@dimen/_8dp"
-        android:numColumns="3"
-        android:stretchMode="spacingWidthUniform"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/carousel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

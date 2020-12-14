@@ -13,16 +13,21 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
 import com.team9.daymate.R;
-import com.team9.daymate.elements.CircularImageView;
-import com.team9.daymate.routines.RoutineObject;
+import com.team9.daymate.core.RoutineObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Muuttaa rutiinien kategoriet käyttöliittymän listaksi
+ *
+ * @author Alexander L
+ */
 public class CategoryAdapter extends ArrayAdapter<RoutineObject> {
 
     private Context context;
-    private List<RoutineObject> routines = new ArrayList<>();
+    private List<RoutineObject> routines;
     @LayoutRes int resource;
 
 

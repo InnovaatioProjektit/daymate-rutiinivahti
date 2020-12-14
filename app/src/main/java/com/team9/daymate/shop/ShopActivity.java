@@ -1,8 +1,6 @@
 package com.team9.daymate.shop;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,14 +10,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.team9.daymate.R;
 import com.team9.daymate.core.Presenter;
-import com.team9.daymate.example.TestFragment;
 import com.team9.daymate.example.TestViewModel;
 import com.team9.daymate.fragments.ProgressFragment;
 import com.team9.daymate.routines.RoutineActivity;
 import com.team9.daymate.routines.RoutineListFragment;
-import com.team9.daymate.routines.RoutineViewModel;
+import com.team9.daymate.viewModels.RoutineViewModel;
 
-
+/**
+ * Kauppasivu jossa käyttäjä voi ostaa muokkauksia käyttöliittymään
+ *
+ * @author Roni akiola
+ * @author Alexander L
+ * @deprecated Ei käytössä missään ohjelmassa
+ */
 public class ShopActivity extends Presenter {
 
     protected void onCreate(Bundle savedInstanceState) {

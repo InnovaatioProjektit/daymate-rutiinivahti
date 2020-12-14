@@ -22,4 +22,7 @@
     <dimen name="_32dp">32dp</dimen>
     <dimen name="_32sp">32sp</dimen>
     <dimen name="_18sp">18sp</dimen>
+    <dimen name="_xheight">670dp</dimen>
+    <dimen name="_height">610dp</dimen>
+    <dimen name="_64sp">64sp</dimen>
 </resources>

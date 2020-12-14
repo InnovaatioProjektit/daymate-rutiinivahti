@@ -7,8 +7,14 @@ import androidx.annotation.Nullable;
 
 import com.team9.daymate.R;
 import com.team9.daymate.core.UIView;
-import com.team9.daymate.routines.RoutineViewModel;
+import com.team9.daymate.viewModels.NotificationViewModel;
+import com.team9.daymate.viewModels.UserViewModel;
 
+
+/**
+ *
+ * @author Alexander L
+ */
 public class ProgressFragment extends UIView {
 
     public ProgressFragment(@Nullable Bundle InstanceState) {
@@ -24,6 +30,6 @@ public class ProgressFragment extends UIView {
         if (this.getArguments() != null) {
         }
 
-        this.setViewModel(RoutineViewModel.class);
+        this.setViewModel(NotificationViewModel.class);
     }
 }

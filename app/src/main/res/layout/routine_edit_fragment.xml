@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @author Alexander L -->
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/cyan100">
+
+
+    <ImageButton
+        android:id="@+id/tab_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Close"
+        android:src="@drawable/tab_close_32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/tab_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Delete"
+        android:src="@drawable/ic_trash_32"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/orange50"
+        android:elevation="5dp"
+        app:cardCornerRadius="60dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Rutiinit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Muokkaa rutiini"
+            android:textAlignment="gravity"
+            android:textSize="24sp" />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        app:cardBackgroundColor="@color/lime100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/title"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|top"
+            android:backgroundTint="@color/pacific500"
+            app:cardCornerRadius="5dp"
+            app:cardPreventCornerOverlap="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:text="Päivän tavoite" />
+
+        </androidx.cardview.widget.CardView>
+
+        <include
+            layout="@layout/counter_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/lime100"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintDimensionRatio="1:1">
+
+        <!-- badge title -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/aikavali"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|top"
+            android:backgroundTint="@color/pacific500"
+            app:cardCornerRadius="5dp"
+            app:cardPreventCornerOverlap="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:text="Toisto" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- checkbox card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/check1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginVertical="5dp"
+            app:cardCornerRadius="@dimen/icon_large"
+            android:layout_below="@id/aikavali">
+
+            <CheckBox
+                android:id="@+id/checkbox_maanantai"
+                android:background="@drawable/check_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:onClick="@null"
+                android:paddingVertical="0dp"
+                android:text="Ma"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center"
+                />
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- checkbox card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/check2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginVertical="5dp"
+            app:cardCornerRadius="@dimen/icon_large"
+            android:layout_below="@id/aikavali"
+            android:layout_toEndOf="@id/check1">
+
+            <CheckBox
+                android:id="@+id/checkbox_tiistai"
+                android:background="@drawable/check_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:onClick="@null"
+                android:text="Ti"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- checkbox card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/check3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginVertical="5dp"
+            app:cardCornerRadius="@dimen/icon_large"
+            android:layout_below="@id/aikavali"
+            android:layout_toEndOf="@id/check2" >
+
+            <CheckBox
+                android:id="@+id/checkbox_keskiviikko"
+                android:background="@drawable/check_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:onClick="@null"
+                android:text="Ke"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- checkbox card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/check4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginVertical="5dp"
+            app:cardCornerRadius="@dimen/icon_large"
+            android:layout_below="@id/aikavali"
+            android:layout_toEndOf="@id/check3">
+
+            <CheckBox
+                android:id="@+id/checkbox_torstai"
+                android:background="@drawable/check_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:onClick="@null"
+                android:text="To"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- checkbox card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/check5"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginVertical="5dp"
+            app:cardCornerRadius="@dimen/icon_large"
+            android:layout_below="@id/aikavali"
+            android:layout_toEndOf="@id/check4">
+
+            <CheckBox
+                android:id="@+id/checkbox_perjantai"
+                android:background="@drawable/check_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:onClick="@null"
+                android:text="Pe"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- checkbox card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/check6"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginVertical="5dp"
+            app:cardCornerRadius="@dimen/icon_large"
+            android:layout_below="@id/aikavali"
+            android:layout_toEndOf="@id/check5">
+
+            <CheckBox
+                android:id="@+id/checkbox_lauantai"
+                android:background="@drawable/check_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:onClick="@null"
+                android:text="La"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- checkbox card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginVertical="5dp"
+            app:cardCornerRadius="@dimen/icon_large"
+            android:layout_below="@id/aikavali"
+            android:layout_toEndOf="@id/check6">
+
+            <CheckBox
+                android:id="@+id/checkbox_sunnuntai"
+                android:background="@drawable/check_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:onClick="@null"
+                android:text="Su"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center" />
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:background="@color/lime100"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <!-- badge title -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|top"
+            android:backgroundTint="@color/pacific500"
+            app:cardCornerRadius="5dp"
+            app:cardPreventCornerOverlap="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:text="Aikaväli" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- radiogroup -->
+        <com.team9.daymate.elements.RadioGroupView
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:text="routines">
+
+
+            <!-- radio button -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="90dp">
+
+                <RadioButton
+                    android:id="@+id/routines_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/ic_time_56"
+                    android:minWidth="240dp"
+                    android:paddingStart="20sp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="40dp"
+                    android:paddingBottom="20dp"
+                    android:text="Milloin tahansa"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="90dp">
+
+                <RadioButton
+                    android:id="@+id/morning_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/ic_morn_56"
+                    android:minWidth="240dp"
+                    android:paddingStart="20sp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="40dp"
+                    android:paddingBottom="20dp"
+                    android:text="Aamulla"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="90dp">
+
+                <RadioButton
+                    android:id="@+id/day_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/ic_sun_56"
+                    android:minWidth="240dp"
+                    android:paddingStart="20sp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="40dp"
+                    android:paddingBottom="20dp"
+                    android:text="Päivällä"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="90dp">
+
+                <RadioButton
+                    android:id="@+id/evening_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/ic_night_56"
+                    android:minWidth="240dp"
+                    android:paddingStart="20sp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="40dp"
+                    android:paddingBottom="20dp"
+                    android:text="Illalla"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+
+        </com.team9.daymate.elements.RadioGroupView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lime100"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_apply"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginBottom="40dp"
+            app:cardBackgroundColor="@color/gray400"
+            app:cardCornerRadius="90dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:text="Vahvista"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sp" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

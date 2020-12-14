@@ -14,6 +14,7 @@ import com.team9.daymate.core.UIView;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 
 // voi kopioida tästä alaspäin
@@ -22,6 +23,8 @@ public class TestFragment extends UIView {
 
     public TestFragment(@Nullable Bundle InstanceState) {
         super(InstanceState, R.layout.routine_daily_fragment);
+
+
 
     }
 

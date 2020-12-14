@@ -13,10 +13,7 @@
         android:theme="@style/Theme.Daymate">
 
 
-        <activity
-            android:name=".notification.NotificationActivity"
-            android:label="@string/title_activity_notification" />
-        <activity android:name=".NavActivity" />
+        <activity android:name=".RouterActivity" />
         <activity android:name=".shop.ShopActivity" />
         <activity android:name=".routines.RoutineActivity">
             <intent-filter>

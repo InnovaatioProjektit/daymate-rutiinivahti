@@ -1,0 +1,56 @@
+<!-- @author Alexander L -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/counter_value"
+        android:layout_width="85dp"
+        android:layout_height="91dp"
+        android:layout_alignLeft="@id/counter_buttons"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="51dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="@dimen/_64sp" />
+
+    <LinearLayout
+        android:id="@+id/counter_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@color/blue400">
+
+        <ImageButton
+            android:id="@+id/counter_plus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:alpha="1"
+            android:background="@drawable/ic_plus_24"
+            android:contentDescription="meh"
+            android:padding="10dp"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/counter_minus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:alpha="1"
+            android:background="@drawable/ic_minus_24"
+            android:contentDescription="meh"
+            android:padding="10dp"
+            android:scaleType="fitXY" />
+
+    </LinearLayout>
+
+</RelativeLayout>

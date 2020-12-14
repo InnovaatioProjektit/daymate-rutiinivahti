@@ -1,71 +1,99 @@
 package com.team9.daymate.routines;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.graphics.Color;
+import android.net.MailTo;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.math.MathUtils;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.team9.daymate.R;
+import com.team9.daymate.adapters.MultiViewAdapter;
 import com.team9.daymate.adapters.RoutineAdapter;
 import com.team9.daymate.core.AppDataLogic;
+import com.team9.daymate.core.RoutineObject;
 import com.team9.daymate.core.UIView;
 import com.team9.daymate.elements.CircularImageView;
-import com.team9.daymate.example.TestViewModel;
+import com.team9.daymate.viewModels.RoutineEditViewModel;
 
+import java.util.ArrayList;
+
+
+/**
+ * Näytä päivittäiset rutiinit palkeissa
+ *
+ * @author Alexander L
+ */
 public class RoutineDailyFragment extends UIView {
-    public boolean hasLaunch;
+
+    RecyclerView rv;
+    MultiViewAdapter mad;
 
 
     public RoutineDailyFragment(@Nullable Bundle InstanceState) {
-        super(InstanceState, R.layout.routine_daily_fragment);  //TODO: VAIHDA LAYOUT OIKEAAN
-
+        super(InstanceState, R.layout.routine_daily_fragment);
     }
 
     public void onViewAction(View view) {
+        rv = (RecyclerView) getView().findViewById(R.id.carousel);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setAdapter(mad);
 
-        GridView gv = view.findViewById(R.id.RoutineGrid);
 
-        gv.setAdapter(new RoutineAdapter(getContext(), R.layout.routine_card_grid, AppDataLogic.routines));
 
-        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("VARASTO", "" + view.findViewById(R.id.thumbnail));
 
-                CircularImageView cv = view.findViewById(R.id.thumbnail);
-                cv.setProgressWithAnimation(cv.getProgress() + 50);
-
-                AppDataLogic.routines.get(position).setProgress( MathUtils.clamp((cv.getProgress() + 50), 0, 100));
-
-            }
-        });
 
 
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hasLaunch = false;
-        if (this.getArguments() != null) {
 
-        }
+        mad = new MultiViewAdapter(4, AppDataLogic.routines);
+
+
+        mad.setObserver(new MultiViewAdapter.Observer() {
+            @Override
+            protected boolean OnViewCycle(MultiViewAdapter.ViewHolder holder, int position) {
+                RoutineEditViewModel.FLAGS[] flags = {RoutineEditViewModel.FLAGS.ANYTIME, RoutineEditViewModel.FLAGS.MORNING,
+                                                      RoutineEditViewModel.FLAGS.DAY, RoutineEditViewModel.FLAGS.EVENING};
+
+                ArrayList<RoutineObject> roal = new ArrayList<>();
+
+                for(RoutineObject rob : AppDataLogic.routines){
+                    if(rob.getFlags().contains(flags[position])){
+                        roal.add(rob);
+                    }
+                }
+
+                if(roal.isEmpty()){
+                    // cholos na ma
+                }
+
+                mad.setRoutinas(roal);
+                switch(position){
+                    case 0: holder.iv.setImageResource(R.drawable.ic_time_56); break;
+                    case 1: holder.iv.setImageResource(R.drawable.ic_morn_56); break;
+                    case 2: holder.iv.setImageResource(R.drawable.ic_sun_56); break;
+                    case 3: holder.iv.setImageResource(R.drawable.ic_night_56); break;
+                }
+
+
+                return false;
+            }
+        });
+
     }
-
-
 }

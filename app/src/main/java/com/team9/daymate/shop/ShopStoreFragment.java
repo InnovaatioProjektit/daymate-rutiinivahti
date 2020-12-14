@@ -7,8 +7,10 @@ import androidx.annotation.Nullable;
 
 import com.team9.daymate.R;
 import com.team9.daymate.core.UIView;
-import com.team9.daymate.routines.RoutineViewModel;
 
+/**
+ * @deprecated Ei käytössä
+ */
 public class ShopStoreFragment extends UIView {
 
     public ShopStoreFragment(@Nullable Bundle InstanceState) {

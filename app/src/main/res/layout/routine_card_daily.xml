@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @author Alexander L -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/card_view"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:elevation="3dp"
+        app:cardBackgroundColor="@color/mango200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/carouselCard"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|top"
+        android:backgroundTint="@color/blue400"
+        android:elevation="1dp"
+        app:cardCornerRadius="6dp"
+        app:cardPreventCornerOverlap="true">
+
+        <ImageView
+            android:id="@+id/card_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:paddingBottom="0dp"
+            android:paddingHorizontal="3dp"
+            android:src="@drawable/ic_sun_56" />
+    </androidx.cardview.widget.CardView>
+
+    <com.team9.daymate.elements.WrappedGridView
+        android:paddingTop="50dp"
+        android:id="@+id/RoutineGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="140dp"
+        android:verticalSpacing="@dimen/_8dp"
+        android:numColumns="3"
+        android:stretchMode="spacingWidthUniform" />
+
+    </androidx.cardview.widget.CardView>
+

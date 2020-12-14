@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,12 +26,27 @@ import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.math.MathUtils;
 
 import com.team9.daymate.R;
 
-
+/**
+ * CircularImageView on interaktiivinen käyttöliittymän komponentti, joka piirtää pyöreän
+ * kuvakomponentin jota ympäröi graafisesti muokattava kehä. Kehän edistysluku {@see CircularImageView#progressStep}
+ * määritsee sen pituuden suhteessa kattolukuun {@see CircularImageView#progressMax}
+ *
+ * Käyttö layoutissa: app:circle_color
+ *                    app:circle_backgroundColor
+ *                    app:circle_progress
+ *                    app:circle_min
+ *                    app:circle_max
+ *
+ * author Alexander L
+ * author Jaakko Buchelnikov
+ * @version 1.0
+ */
 @SuppressLint("AppCompatCustomView")
 public class CircularImageView extends AppCompatImageView {
 
@@ -131,11 +147,16 @@ public class CircularImageView extends AppCompatImageView {
         progressMin   = a.getInteger(R.styleable.CircularImageView_circle_min, DEFAULT_PROGRESS_MIN);
 
         a.recycle();
-
         initialize();
     }
 
 
+    /**
+     * onDraw piirtää ympyrän muotoisen komponentin jonka kehän pituus on suhteessa edistysakseliin {@see CircularImageView#progressStep}
+     * Default toiminta on kun kehän tausta perii kehän värin syvemmät piirteet. Kaikki värit ovat muokattavissa käyttäjätasolla.,
+     * @author Alexander L
+     * @param canvas Piirtopinta
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         if (disableTransformation) {
@@ -184,6 +205,7 @@ public class CircularImageView extends AppCompatImageView {
     /**
      * Vaalentaa väriä
      *
+     * @author JaakkoBuchelnikov
      * @param color  Vaannettava väri
      * @param factor 0 kautta 4
      * @return Vaalennettu väri
@@ -250,6 +272,7 @@ public class CircularImageView extends AppCompatImageView {
 
     public void setProgressMin(int min) {
         progressMin = min;
+        drawableDirty = true;
         invalidate();
     }
 
@@ -259,6 +282,7 @@ public class CircularImageView extends AppCompatImageView {
 
     public void setProgressMax(int max) {
         progressMax = max;
+        drawableDirty = true;
         invalidate();
     }
 
@@ -277,6 +301,7 @@ public class CircularImageView extends AppCompatImageView {
 
         this.borderColor = borderColor;
         borderPaint.setColor(borderColor);
+        drawableDirty = true;
         invalidate();
     }
 
@@ -291,6 +316,7 @@ public class CircularImageView extends AppCompatImageView {
 
         backgroundColor = circleBackgroundColor;
         backgroundPaint.setColor(circleBackgroundColor);
+        drawableDirty = true;
         invalidate();
     }
 
@@ -306,6 +332,7 @@ public class CircularImageView extends AppCompatImageView {
         this.borderWidth = borderWidth;
         borderPaint.setStrokeWidth(borderWidth);
         updateDimensions();
+        drawableDirty = true;
         invalidate();
     }
 
@@ -320,6 +347,7 @@ public class CircularImageView extends AppCompatImageView {
 
         this.borderOverlay = borderOverlay;
         updateDimensions();
+        drawableDirty = true;
         invalidate();
     }
 
@@ -411,6 +439,13 @@ public class CircularImageView extends AppCompatImageView {
         return colorFilter;
     }
 
+
+    /**
+     * Hakee resursseista piirretyn kuvan ja muuttaa se bittilistaksi
+     *
+     * @param drawable Resurssitiedosto
+     * @return Bitmap Palauttaa binäärisen kuvadatan
+     */
     private Bitmap getBitmapFromDrawable(Drawable drawable) {
         if (drawable == null) {
             return null;
@@ -459,6 +494,11 @@ public class CircularImageView extends AppCompatImageView {
         }
     }
 
+
+    /**
+     * @deprecated {@see CircularImageView#setMeasure} tekee saman koordinaattien kaappauksen
+     * @author Alexander L
+     */
     private void updateDimensions() {
         borderRect.set(calculateBounds());
         borderRadius = Math.min((borderRect.height() - borderWidth) / 2.0f, (borderRect.width() - borderWidth) / 2.0f);
@@ -512,6 +552,12 @@ public class CircularImageView extends AppCompatImageView {
         rebuildShader = true;
     }
 
+
+    /**
+     * @author Alexander L
+     * @param event Hiiriliikkeen tapahtuma
+     * @return boolean kosketuksen tila ympyrän sisällä
+     */
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -529,15 +575,22 @@ public class CircularImageView extends AppCompatImageView {
         return Math.pow(x - borderRect.centerX(), 2) + Math.pow(y - borderRect.centerY(), 2) <= Math.pow(borderRadius, 2);
     }
 
+
     /**
-     * Aseta elementin reunan edistys animaatiolla
+     * Aseta elementin reunan edistystä vastaavaa palkki animaatiolla ympäri
      *
+     * @author Alexander L
      * @param progress edistys jota piirretään animaatiolla
      */
     public void setProgressWithAnimation(float progress) {
 
+        if(progressStep >= progressMax){
+            drawableDirty = true;
+            invalidate();
+            return;
+        }
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(this, "progress", progress);
-        objectAnimator.setDuration(1500);
+        objectAnimator.setDuration(1000);
         objectAnimator.setInterpolator(new DecelerateInterpolator());
         objectAnimator.start();
     }

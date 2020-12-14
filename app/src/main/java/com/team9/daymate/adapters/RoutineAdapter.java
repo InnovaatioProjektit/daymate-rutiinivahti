@@ -13,15 +13,21 @@ import androidx.annotation.Nullable;
 
 import com.team9.daymate.R;
 import com.team9.daymate.elements.CircularImageView;
-import com.team9.daymate.routines.RoutineObject;
+import com.team9.daymate.core.RoutineObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Muuttaa rutiinien ilmentymät käyttöliittymän listaksi
+ *
+ * @author Alexander L
+ */
 public class RoutineAdapter extends ArrayAdapter<RoutineObject> {
 
     private Context context;
-    private List<RoutineObject> routines = new ArrayList<>();
+    private List<RoutineObject> routines;
     @LayoutRes int resource;
 
 
@@ -51,6 +57,7 @@ public class RoutineAdapter extends ArrayAdapter<RoutineObject> {
         tv.setText(currentRoutine.getTitle());
 
         CircularImageView civ = (CircularImageView ) listItem.findViewById(R.id.thumbnail);
+        civ.setProgressMax((int)currentRoutine.getProgressMax());
         civ.setProgressWithAnimation(currentRoutine.getProgress());
 
         return listItem;

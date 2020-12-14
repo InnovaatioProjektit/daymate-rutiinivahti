@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- @author Alexander L -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,13 +11,13 @@
         app:circle_backgroundColor="@color/blue600"
         app:circle_color="@color/blush700"
         app:circle_backgroundTint="@color/white"
-        app:circle_progress="10"
+        app:circle_progress="0"
         app:circle_width="5dp"
         app:circle_overlay="true"
 
 
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:layout_marginHorizontal="@dimen/_8dp"
         android:elevation="3dp"
         android:padding="10dp">

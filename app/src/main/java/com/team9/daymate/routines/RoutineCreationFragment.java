@@ -1,28 +1,22 @@
 package com.team9.daymate.routines;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewAnimationUtils;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.team9.daymate.R;
 import com.team9.daymate.core.UIView;
-import com.team9.daymate.elements.CircularImageView;
-import com.team9.daymate.example.TestViewModel;
-import com.team9.daymate.viewModels.RoutineCreationViewModel;
+import com.team9.daymate.viewModels.RoutineViewModel;
 
+/**
+ * Avaa rutiinien kategorialistan jossa valitaan minkä luokan rutiini halutaan lisätä
+ *
+ * @author Alexander L
+ *
+ */
 public class RoutineCreationFragment extends UIView {
 
     public RoutineCreationFragment(@Nullable Bundle InstanceState) {
@@ -30,18 +24,24 @@ public class RoutineCreationFragment extends UIView {
     }
 
     public void onViewAction(View view) {
-        getViewModel(RoutineCreationViewModel.class).populateList(getContext(), view);
+        ListView lv = getViewModel(RoutineViewModel.class).populateCategoryList(getContext(), view);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                getViewModel(RoutineViewModel.class).selectCategory(position);
+                ((RoutineActivity)getContext()).replaceView(R.id.fragment_container, RoutinePickerFragment.class);
+            }
+        });
+
+
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (this.getArguments() != null) {
-        }
+        this.setViewModel(RoutineViewModel.class);
 
-        this.setViewModel(RoutineCreationViewModel.class);
-        getViewModel(RoutineCreationViewModel.class).setActivity(getFragmentManager());
-        getViewModel(RoutineCreationViewModel.class).initialize(getResources());
+        getViewModel(RoutineViewModel.class).setCategories(getResources());
     }
-
-
 }

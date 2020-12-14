@@ -28,6 +28,13 @@ import androidx.annotation.NonNull;
 
 import com.team9.daymate.R;
 
+
+/**
+ * Kompponenti joka piirtää palkin jonka sisäiset värit ovat muokattavissa.
+ * Käytetään edistyksen havainnostamisessa.
+ *
+ * @author Alexander L
+ */
 public class ProgressPillar extends View {
 
     private static final int DEFAULT_PROGRESS_MIN = 0;
@@ -292,6 +299,7 @@ public class ProgressPillar extends View {
     /**
      * Vaalentaa väriä
      *
+     * @author Jaakko Buchelnikov
      * @param color  Vaannettava väri
      * @param factor 0 kautta 4
      * @return Vaalennettu väri
@@ -311,6 +319,7 @@ public class ProgressPillar extends View {
      * Lisää värin läpinäkyvyyttä annetulla tekijällä
      * Mitä enemmän tekijä on lähempänä nollaa, sitä enemmän väri muuttuu läpinäkyväksi
      *
+     * @author Alexander L
      * @param color  Kohdeväri
      * @param factor 1.0f kautta 0.0f
      * @return int - Läpinäkyvä väri
@@ -322,9 +331,12 @@ public class ProgressPillar extends View {
         int blue = Color.blue(color);
         return Color.argb(alpha, red, green, blue);
     }
+
+
     /**
-     * Aseta elementin reunan edistys animaatiolla
+     * Aseta elementin reunan edistystä vastaavaa palkki animaatiolla ympäri
      *
+     * @author Alexander L
      * @param progress edistys jota piirretään animaatiolla
      */
     public void setProgressWithAnimation(float progress) {
