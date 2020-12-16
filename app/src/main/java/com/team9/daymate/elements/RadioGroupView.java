@@ -1,22 +1,16 @@
 package com.team9.daymate.elements;
 
 import android.content.Context;
-import android.provider.MediaStore;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

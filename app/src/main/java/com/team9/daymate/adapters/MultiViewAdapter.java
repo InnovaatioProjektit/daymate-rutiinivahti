@@ -8,12 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+
 import androidx.cardview.widget.CardView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -83,21 +81,25 @@ public class MultiViewAdapter extends RecyclerView.Adapter<MultiViewAdapter.View
         holder.grid.setAdapter(new RoutineAdapter(context, R.layout.routine_card_grid, routinas));
         holder.grid.setOnItemClickListener((parent, view, position1, id) -> {
 
-            RoutineObject ro = AppDataLogic.routines.get(position1);
             CircularImageView cv = view.findViewById(R.id.thumbnail);
+            RoutineObject ro = (RoutineObject)cv.pullObject();
 
-            Log.d("VARASTO cv ", ""+ cv.getProgress());
-            Log.d("VARASTO ro", ""+ ro.getProgress());
+
+            Log.d("DEBUGME", "titles match? on click"+ ro.getTitle());
 
             ro.setProgress(ro.getProgress() + 1);
             cv.setProgressWithAnimation(ro.getProgress());
 
 
+
+
             if( (ro.getProgress() >= ro.getProgressMax()) && !ro.finished() ){
 
                 View layout = LayoutInflater.from(context).inflate(R.layout.toast_message, (ViewGroup) view.findViewById(R.id.toast_root));
-
                 Toast t = new Toast(context);
+
+                AppDataLogic.weekly_points[AppDataLogic.today - 1]++;
+
                 t.setView(layout);
                 t.setDuration(Toast.LENGTH_LONG);
                 t.setGravity(Gravity.CENTER_VERTICAL, 0, 0);

@@ -55,7 +55,7 @@ public class JsonContainerFactory {
      *
      * @param name Alkion nimi
      * @param item Alkion objekti
-     * @return
+     * @return JSONObject Palauttaa JSON tietorakenteen
      */
     public static JSONObject Set(String name, Object item) {
         JSONObject jsob = new JSONObject();
@@ -74,8 +74,9 @@ public class JsonContainerFactory {
      *  alustaa uuden tiedoston.
      *
      * @param _context Sovellusympäristön käyttöliittymä
+     * @return boolean Palauttaa true kun tiedostoa ei löytynt ja uusi alustettiin
      */
-    public void initialize(Context _context) {
+    public boolean initialize(Context _context) {
         File internal_filepath = _context.getFilesDir();
         File fileref = new File(internal_filepath, FILE_IDENT);
 
@@ -91,6 +92,9 @@ public class JsonContainerFactory {
                 } catch (JSONException ex) {
                     Log.w("InternalStorage", "Error parsing to JSONObject ", ex);
                 }
+
+                return false;
+
             } else {
                 OutputStream writer = new FileOutputStream(fileref);
                 writer.write("{}".getBytes());
@@ -100,6 +104,8 @@ public class JsonContainerFactory {
         } catch (IOException ioex) {
             Log.w("InternalStorage", "Error writing " + fileref, ioex);
         }
+
+        return true;
 
     }
 
@@ -129,6 +135,20 @@ public class JsonContainerFactory {
         }
     }
 
+    /**
+     * Tuodaan JSONArrayn alkiot alkukantaiseen listaan integerin
+     *
+     * @param name Alkion nimi
+     * @return tyhjä alustettu alkukantainen int lista
+     */
+    public void get(String name, int[] list) throws JSONException {
+        JSONArray jar = json_cache.getJSONArray(name);
+
+        for(int i=0;i<jar.length(); i++){
+            list[i] = (int)jar.get(i);
+        }
+    }
+
 
     /**
      * Lisää tietotyypin alkion JSON-tietorakenteseen
@@ -155,7 +175,21 @@ public class JsonContainerFactory {
     public <T> void add(String name, ArrayList<T> list){
         JSONArray jar = new JSONArray();
 
-        for(T item : list){
+        for(Object item : list){
+            jar.put(item);
+        }
+
+        try{
+            json_cache.putOpt(name, jar);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+    }
+
+    public <T> void add(String name, int[] list){
+        JSONArray jar = new JSONArray();
+
+        for(int item : list){
             jar.put(item);
         }
 
@@ -181,6 +215,15 @@ public class JsonContainerFactory {
         } catch (IOException var5) {
             Log.w("InternalStorage", "Error writing " + fileref, var5);
         }
+    }
 
+
+    public void verbose(){
+        Log.d("VARASTO", ""+ json_cache);
+        try {
+            Log.d("VARASTO", "routines: " + ((JSONArray)json_cache.get("routines")).length());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

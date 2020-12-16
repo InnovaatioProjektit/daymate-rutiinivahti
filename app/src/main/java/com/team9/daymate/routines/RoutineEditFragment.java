@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.team9.daymate.R;
+import com.team9.daymate.core.AppDataLogic;
 import com.team9.daymate.core.Presenter;
 import com.team9.daymate.core.UIView;
 import com.team9.daymate.elements.RadioGroupView;
@@ -83,6 +84,8 @@ public class RoutineEditFragment extends UIView {
         }else if(chd.isChecked()){
             rg.setCurrentradio(chd);
         }
+
+        toggleButton(btn);
 
 
         // Seuraa muutoksia
@@ -194,6 +197,8 @@ public class RoutineEditFragment extends UIView {
         super.onCreate(savedInstanceState);
         this.setViewModel(RoutineEditViewModel.class);
         //getViewModel(RoutineEditViewModel.class).setSharedData(getSharedViewModel(RoutineViewModel.class).getShaderEditData());
+
+
 
 
     }

@@ -34,7 +34,7 @@
 
 
     <com.team9.daymate.elements.CircularImageView
-        android:id="@+id/circularImageView"
+        android:id="@+id/progress_circularView"
         android:layout_width="312dp"
         android:layout_height="184dp"
         android:layout_marginTop="40dp"
@@ -44,7 +44,7 @@
         app:circle_backgroundTint="@color/white"
         app:circle_color="@color/green"
 
-        app:circle_progress="50"
+        app:circle_progress="0"
         app:circle_width="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circularImageView">
+        app:layout_constraintTop_toBottomOf="@+id/progress_circularView">
 
 
         <androidx.cardview.widget.CardView
@@ -197,7 +197,7 @@
                 app:layout_constraintStart_toEndOf="@+id/progressbar_saturday"
                 app:layout_constraintTop_toTopOf="parent"
                 app:pillarWidth="100"
-                app:progress="20" />
+                app:progress="0" />
 
             <TextView
                 android:id="@+id/textView"
@@ -313,10 +313,10 @@
         android:textAlignment="center"
         android:textColor="@color/lime600"
         android:textSize="56sp"
-        app:layout_constraintBottom_toBottomOf="@+id/circularImageView"
-        app:layout_constraintEnd_toEndOf="@+id/circularImageView"
-        app:layout_constraintStart_toStartOf="@+id/circularImageView"
-        app:layout_constraintTop_toTopOf="@+id/circularImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_circularView"
+        app:layout_constraintEnd_toEndOf="@+id/progress_circularView"
+        app:layout_constraintStart_toStartOf="@+id/progress_circularView"
+        app:layout_constraintTop_toTopOf="@+id/progress_circularView"
         app:layout_constraintVertical_bias="0.516" />
 
     <androidx.constraintlayout.widget.Barrier

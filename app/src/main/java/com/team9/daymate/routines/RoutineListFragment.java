@@ -34,7 +34,7 @@ public class RoutineListFragment extends UIView {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Presenter ra = (Presenter) getContext();
-                getSharedViewModel(RoutineEditViewModel.class).setSharedData(AppDataLogic.routines.get(position));
+                getSharedViewModel(RoutineEditViewModel.class).setEditData(AppDataLogic.routines.get(position));
                 ra.loadView(R.id.fragment_container, RoutineEditFragment.class);
             }
         });

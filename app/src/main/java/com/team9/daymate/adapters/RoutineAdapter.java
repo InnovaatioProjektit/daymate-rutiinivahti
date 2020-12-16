@@ -1,6 +1,7 @@
 package com.team9.daymate.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.team9.daymate.R;
+import com.team9.daymate.core.AppDataLogic;
 import com.team9.daymate.elements.CircularImageView;
 import com.team9.daymate.core.RoutineObject;
+import com.team9.daymate.viewModels.RoutineEditViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,9 +59,16 @@ public class RoutineAdapter extends ArrayAdapter<RoutineObject> {
         TextView tv = (TextView) listItem.findViewById(R.id.title);
         tv.setText(currentRoutine.getTitle());
 
-        CircularImageView civ = (CircularImageView ) listItem.findViewById(R.id.thumbnail);
+        CircularImageView civ = (CircularImageView) listItem.findViewById(R.id.thumbnail);
         civ.setProgressMax((int)currentRoutine.getProgressMax());
         civ.setProgressWithAnimation(currentRoutine.getProgress());
+        civ.setImageResource(currentRoutine.getIcon());
+        civ.setColorFilter(Color.WHITE);
+        civ.setCircleBackgroundColor(currentRoutine.getColor());
+
+
+        //TODO: HACKING TO SYNC RESOURCE TO DATA, TOO LAZY TO SOLVE PROPER WAY
+        civ.attachObject(currentRoutine);
 
         return listItem;
     }

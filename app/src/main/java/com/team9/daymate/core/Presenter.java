@@ -1,6 +1,5 @@
 package com.team9.daymate.core;
 
-import android.app.Presentation;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStore;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -28,7 +26,7 @@ public class Presenter extends AppCompatActivity {
     protected ViewModel viewModel;
 
     /**
-     * Yhdistää ViewMddel {@see ViewModel} olion käyttöliittymään palveluntuottajan {@see ViewModelProvider} avulla.
+     * Yhdistää ViewModel {@see ViewModel} olion käyttöliittymään palveluntuottajan {@see ViewModelProvider} avulla.
      * ViewModel ilmentyy session aikana vain kerran. Sama olemassa oleva olio palautuu.
      *
      * @param cls Geneerinen  yläluokka

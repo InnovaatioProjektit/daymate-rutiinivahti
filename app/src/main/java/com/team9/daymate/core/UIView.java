@@ -1,7 +1,6 @@
 package com.team9.daymate.core;
 
 import android.os.Bundle;
-import android.os.SharedMemory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
-
-import com.team9.daymate.example.TestViewModel;
-
-import java.lang.reflect.Type;
 
 /**
  *
@@ -34,6 +29,8 @@ public abstract class UIView extends Fragment{
             this.setArguments(InstanceState);
         }
     }
+
+    public UIView(@LayoutRes int layoutRes) { super(layoutRes); }
 
     public abstract void onViewAction(View view);
 

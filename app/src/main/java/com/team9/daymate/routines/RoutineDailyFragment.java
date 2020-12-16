@@ -51,11 +51,6 @@ public class RoutineDailyFragment extends UIView {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(mad);
 
-
-
-
-
-
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,10 +71,6 @@ public class RoutineDailyFragment extends UIView {
                     if(rob.getFlags().contains(flags[position])){
                         roal.add(rob);
                     }
-                }
-
-                if(roal.isEmpty()){
-                    // cholos na ma
                 }
 
                 mad.setRoutinas(roal);

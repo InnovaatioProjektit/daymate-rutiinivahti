@@ -57,7 +57,7 @@ public class CategoryAdapter extends ArrayAdapter<RoutineObject> {
         tv.setText(currentRoutine.getTitle());
 
         CardView cv = (CardView) listItem.findViewById(R.id.thumbnail);
-        //cv.setCardBackgroundColor(currentRoutine.getColor());
+        cv.setCardBackgroundColor(currentRoutine.getColor());
 
         return listItem;
     }

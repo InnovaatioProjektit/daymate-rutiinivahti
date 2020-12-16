@@ -77,6 +77,7 @@ public class CircularImageView extends AppCompatImageView {
     private int backgroundColor = DEFAULT_CIRCLE_BACKGROUND_COLOR;
     private int backgroundTint = DEFAULT_CIRCLE_BACKGROUND_COLOR;
     private int imageAlpha = DEFAULT_IMAGE_ALPHA;
+    private int imageScale = 0;
 
     private Bitmap bitmap;
     private Canvas bitmapCanvas;
@@ -98,6 +99,7 @@ public class CircularImageView extends AppCompatImageView {
 
     private boolean borderOverlay;
     private boolean disableTransformation;
+    private Object routine;
 
     private void initialize(){
         super.setScaleType(SCALE_TYPE);
@@ -145,6 +147,7 @@ public class CircularImageView extends AppCompatImageView {
         progressStep = a.getFloat(R.styleable.CircularImageView_circle_progress, DEFAULT_CIRCLE_BACKGROUND_COLOR);
         progressMax    = a.getInteger(R.styleable.CircularImageView_circle_max, DEFAULT_PROGRESS_MAX);
         progressMin   = a.getInteger(R.styleable.CircularImageView_circle_min, DEFAULT_PROGRESS_MIN);
+        imageScale   = a.getInteger(R.styleable.CircularImageView_circle_iconScale, DEFAULT_PROGRESS_MIN);
 
         a.recycle();
         initialize();
@@ -172,7 +175,7 @@ public class CircularImageView extends AppCompatImageView {
             if (drawableDirty && bitmapCanvas != null) {
                 drawableDirty = false;
                 Drawable drawable = getDrawable();
-                drawable.setBounds(0, 0, bitmapCanvas.getWidth(), bitmapCanvas.getHeight());
+                drawable.setBounds(10, 10, bitmapCanvas.getWidth() - 10, bitmapCanvas.getHeight() - 10 );
                 drawable.draw(bitmapCanvas);
             }
 
@@ -205,7 +208,8 @@ public class CircularImageView extends AppCompatImageView {
     /**
      * Vaalentaa väriä
      *
-     * @author JaakkoBuchelnikov
+     * @author Jaakko Buchelnikov
+     *
      * @param color  Vaannettava väri
      * @param factor 0 kautta 4
      * @return Vaalennettu väri
@@ -465,7 +469,7 @@ public class CircularImageView extends AppCompatImageView {
             }
 
             Canvas canvas = new Canvas(bitmap);
-            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.setBounds(10, 10, canvas.getWidth() - 10, canvas.getHeight() - 10 );
             drawable.draw(canvas);
             return bitmap;
         } catch (Exception e) {
@@ -593,6 +597,18 @@ public class CircularImageView extends AppCompatImageView {
         objectAnimator.setDuration(1000);
         objectAnimator.setInterpolator(new DecelerateInterpolator());
         objectAnimator.start();
+    }
+
+    /**
+     * TODO: Hacking
+     */
+
+    public void attachObject(Object routine){
+        this.routine = routine;
+    }
+
+    public Object pullObject(){
+        return this.routine;
     }
 
 }

@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import androidx.core.math.MathUtils;
 
-import org.w3c.dom.Text;
 
 /**
  * Lisäys- ja vähennys laskuri

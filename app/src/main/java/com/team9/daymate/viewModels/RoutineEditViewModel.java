@@ -13,6 +13,7 @@ import com.team9.daymate.core.AppDataLogic;
 import com.team9.daymate.core.Counter;
 import com.team9.daymate.core.RoutineObject;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.EnumSet;
 
@@ -24,14 +25,15 @@ import java.util.EnumSet;
  */
 public class RoutineEditViewModel extends ViewModel {
 
-    public static enum FLAGS{
+    public static enum FLAGS implements Serializable {
         NONE,
-        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY,
+        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY,             // androidissa sunnuntai = 1
         MORNING, DAY, EVENING, ANYTIME,
         FINISHED;
 
         public static final EnumSet<FLAGS> DAILY = EnumSet.of(MORNING, DAY, EVENING, ANYTIME);
         public static final EnumSet<FLAGS> DAYS = EnumSet.of(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY);
+
     }
 
 
@@ -45,7 +47,7 @@ public class RoutineEditViewModel extends ViewModel {
     private EnumSet<FLAGS> flags;
 
     // luodaan uusi rutiini kun null, muokataan olemassa oleva muuten
-    private int num;
+    private boolean num;
 
 
     public void populateFlags(){
@@ -75,6 +77,14 @@ public class RoutineEditViewModel extends ViewModel {
     public void setSharedData(Object data){
         sharedData = (RoutineObject)data;
         flags = sharedData.getFlags();
+        num = false;
+    }
+
+    public void setEditData(Object data){
+        sharedData = (RoutineObject)data;
+        flags = sharedData.getFlags();
+        num = true;
+
     }
 
     public void setFlag(FLAGS day){
@@ -89,6 +99,10 @@ public class RoutineEditViewModel extends ViewModel {
         flags.removeAll(day);
     }
 
+    /**
+     * Päivä ja aika väli valittuna?
+     * @return boolean Palauttaa true kun kahden lipun ENUM, muuten false
+     */
     public boolean hasFlags(){ return !Collections.disjoint(flags, FLAGS.DAYS) && !Collections.disjoint(flags, FLAGS.DAILY); }
     
     public boolean hasFlags(FLAGS flag){
@@ -101,23 +115,20 @@ public class RoutineEditViewModel extends ViewModel {
     public void applyChanges(){
         sharedData.setFlags(flags);
         sharedData.setProgressMax(counter.get_count());
-        AppDataLogic.routines.add(sharedData);
+
+        if(!num){
+            // Create mode, ylhäällä on edit mode
+            if(flags.contains(FLAGS.valueOf(AppDataLogic.todayToString()))){
+                AppDataLogic.target++;
+                AppDataLogic.routines.add(sharedData);
+            }
+        }
+
     }
 
     public boolean removeChanges() {
         return AppDataLogic.routines.remove(sharedData);
     }
-
-
-    /**
-     * Muokkaa JSON tiedostossa olevan rutiinin asetuksia
-     *
-     * @param position alkion paikka JSON-listassa
-     */
-    public void applyChanges(int position){ AppDataLogic.routines.add(position, (RoutineObject)sharedData);}
-
-
-
 
 
 

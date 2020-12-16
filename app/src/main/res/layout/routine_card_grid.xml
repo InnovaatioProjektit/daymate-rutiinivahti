@@ -9,11 +9,12 @@
     <com.team9.daymate.elements.CircularImageView
         android:id="@+id/thumbnail"
         app:circle_backgroundColor="@color/blue600"
-        app:circle_color="@color/blush700"
-        app:circle_backgroundTint="@color/white"
+        app:circle_color="#A4FF3B"
+        app:circle_backgroundTint="@color/pacific800"
         app:circle_progress="0"
         app:circle_width="5dp"
         app:circle_overlay="true"
+
 
 
         android:layout_width="110dp"
