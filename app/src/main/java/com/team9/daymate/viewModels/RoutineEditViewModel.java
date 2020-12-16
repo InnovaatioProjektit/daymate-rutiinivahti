@@ -118,10 +118,10 @@ public class RoutineEditViewModel extends ViewModel {
 
         if(!num){
             // Create mode, ylhäällä on edit mode
-            if(flags.contains(FLAGS.valueOf(AppDataLogic.todayToString()))){
+
                 AppDataLogic.target++;
                 AppDataLogic.routines.add(sharedData);
-            }
+
         }
 
     }

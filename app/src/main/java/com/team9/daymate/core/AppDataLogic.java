@@ -141,8 +141,6 @@ public class AppDataLogic {
             for(int i = 0; i < len; i++){
                 RoutineObject roob = RoutineObject.FromJSON((JSONObject) jar.get(i));
 
-
-
                 if(item.uuid.equals(roob.uuid)){
                     //Log.d("VARASTO", "POISTO: " + item.getTitle());
                     // listasta löyty saman alkion vanha versio, poistetaan vanha ja lisätään muutokset

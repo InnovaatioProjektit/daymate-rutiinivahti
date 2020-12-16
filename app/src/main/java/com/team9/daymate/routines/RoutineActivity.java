@@ -55,8 +55,8 @@ public class RoutineActivity extends Presenter {
 
 
             // Muistutus joka päivä
-            int[] aika = {12,0};
-            //getViewModel(NotificationViewModel.class).scheduleDailyNotification(aika, this,"MUISTA");
+            int[] aika = {15,0};
+            getViewModel(NotificationViewModel.class).scheduleDailyNotification(aika, this,"MUISTA");
 
 
             this.loadView(R.id.fragment_container, RoutineDailyFragment.class, this.getIntent().getExtras());
