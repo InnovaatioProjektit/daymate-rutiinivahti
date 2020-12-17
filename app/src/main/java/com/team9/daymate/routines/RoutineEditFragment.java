@@ -52,16 +52,15 @@ public class RoutineEditFragment extends UIView {
         final CardView btn = view.findViewById(R.id.btn_apply);
 
 
-        final CheckBox[] checkboxes = {view.findViewById(R.id.checkbox_maanantai), view.findViewById(R.id.checkbox_tiistai), view.findViewById(R.id.checkbox_keskiviikko),
-                view.findViewById(R.id.checkbox_torstai), view.findViewById(R.id.checkbox_perjantai), view.findViewById(R.id.checkbox_lauantai), view.findViewById(R.id.checkbox_sunnuntai)};
+        final CheckBox[] checkboxes = { view.findViewById(R.id.checkbox_sunnuntai), view.findViewById(R.id.checkbox_maanantai), view.findViewById(R.id.checkbox_tiistai), view.findViewById(R.id.checkbox_keskiviikko),
+                view.findViewById(R.id.checkbox_torstai), view.findViewById(R.id.checkbox_perjantai), view.findViewById(R.id.checkbox_lauantai)};
 
         getViewModel(RoutineEditViewModel.class).setCounterView(view.findViewById(R.id.counter_value));
 
 
         // Lisää asetukset
         int index = 0;
-        for (Iterator<RoutineEditViewModel.FLAGS> it = RoutineEditViewModel.FLAGS.DAYS.iterator(); it.hasNext(); ) {
-            RoutineEditViewModel.FLAGS flag = it.next();
+        for (RoutineEditViewModel.FLAGS flag : RoutineEditViewModel.FLAGS.DAYS) {
             checkboxes[index++].setChecked(getViewModel(RoutineEditViewModel.class).hasFlags(flag));
         }
 

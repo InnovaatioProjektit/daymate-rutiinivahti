@@ -142,14 +142,12 @@ public class AppDataLogic {
                 RoutineObject roob = RoutineObject.FromJSON((JSONObject) jar.get(i));
 
                 if(item.uuid.equals(roob.uuid)){
-                    //Log.d("VARASTO", "POISTO: " + item.getTitle());
                     // listasta löyty saman alkion vanha versio, poistetaan vanha ja lisätään muutokset
                     jar.put(i, item.toJSON());
                     return;
                 }
             }
 
-            Log.d("VARASTO","LISÄYS: " + item.getTitle());
             jar.put(item.toJSON());
 
         } catch (JSONException e) {
@@ -157,5 +155,33 @@ public class AppDataLogic {
             e.printStackTrace();
         }
     }
+
+
+
+    /**
+     * Yrittää löytää alkion JSON osiosta ja poistaa sen
+     *
+     * @param item Objekti jota lisätään tai muokataan
+     */
+    public static void remove (RoutineObject item){
+        try {
+            JSONArray jar = (JSONArray) localCache.get("routines");
+            int len = jar.length();
+            for(int i = 0; i < len; i++){
+                RoutineObject roob = RoutineObject.FromJSON((JSONObject) jar.get(i));
+
+                if(item.uuid.equals(roob.uuid)){
+                    jar.remove(i);
+                    return;
+                }
+            }
+
+        } catch (JSONException e) {
+            Log.e("ERROR", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

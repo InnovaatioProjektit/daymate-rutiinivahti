@@ -84,7 +84,7 @@ public class RoutineEditViewModel extends ViewModel {
         sharedData = (RoutineObject)data;
         flags = sharedData.getFlags();
         num = true;
-
+        Log.d("EDITOR", "item: " + sharedData.getTitle() + " flags " + sharedData.getFlags());
     }
 
     public void setFlag(FLAGS day){
@@ -118,15 +118,21 @@ public class RoutineEditViewModel extends ViewModel {
 
         if(!num){
             // Create mode, ylhäällä on edit mode
-
+            if(flags.contains(FLAGS.valueOf(AppDataLogic.todayToString()))){
                 AppDataLogic.target++;
                 AppDataLogic.routines.add(sharedData);
-
+                AppDataLogic.edit("routines", sharedData);
+            }
         }
+
+        // toiselle päivälle, laitetaan päämuistiin
+        AppDataLogic.edit("routines", sharedData);
 
     }
 
     public boolean removeChanges() {
+        // poista päämuistista ( tiedostosta)
+        AppDataLogic.remove(sharedData);
         return AppDataLogic.routines.remove(sharedData);
     }
 
