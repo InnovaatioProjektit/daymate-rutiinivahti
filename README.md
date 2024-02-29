@@ -1,14 +1,13 @@
 
 # DayMate Activity and Routine Monitor
 
-
 #### Course project for Mobiilit Terveyssovellukset (Mobile Health Applications)
 
 We developed an Android application that allows the user to record and schedule their daily routines and activities 
 so that they can improve and facilitate their own time management. The application provides daily alerts
 about important routines, like medicine dosage or hydration. The user receives points for succeeding tasks.
 
-Daymate was designed for clinical and dementia patients, but during Covid-19 pandemic it became a remote time scheduling project.
+Daymate was designed for clinical and dementia patients, but during *Covid-19* pandemic it became a remote time scheduling project.
 
 ## Structure
 
@@ -18,7 +17,6 @@ The project follows a hybrid MVVM design pattern. **Logic** and **Views** are se
 * __Presenter__: UI main class that attaches ViewModels via FactoryProviders.
 * __UIView__: A Fragment that may attach to multiple ViewModels.
 * __ViewModel__: Application logic class.
-
 
 ```md
 team9.daymate
